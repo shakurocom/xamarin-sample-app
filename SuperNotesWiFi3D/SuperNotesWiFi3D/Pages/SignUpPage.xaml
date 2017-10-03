@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:controls="clr-namespace:SuperNotesWiFi3D.Pages.Controls;assembly=SuperNotesWiFi3D"
+    x:Class="SuperNotesWiFi3D.Pages.SignUpPage" 
+    BackgroundColor="{StaticResource colorGreen}">
+    
+	<ContentPage.Content>
+
+        <StackLayout>
+            
+            <controls:NoHelperEntry
+                x:Name="_emailField"
+                BackgroundColor="{StaticResource colorWhite}"
+                HeightRequest="50"
+                Margin="20,100,20,0"
+                Placeholder="email"
+                PlaceholderColor="{StaticResource colorGreenLight}"
+                HorizontalTextAlignment="Center"
+                TextColor="{StaticResource colorGreen}"
+                Text=""
+                Keyboard="Email"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+            />
+
+            <controls:NoHelperEntry
+                x:Name="_passwordField"
+                BackgroundColor="{StaticResource colorWhite}"
+                HeightRequest="50"
+                Margin="20,20,20,0"
+                Placeholder="password"
+                PlaceholderColor="{StaticResource colorGreenLight}"
+                HorizontalTextAlignment="Center"
+                TextColor="{StaticResource colorGreen}"
+                Text=""
+                Keyboard="Default"
+                IsPassword="true"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+            />
+
+            <Entry 
+                x:Name="_userNameField"
+                BackgroundColor="{StaticResource colorWhite}"
+                HeightRequest="50"
+                Margin="20,40,20,0"
+                Placeholder="display name"
+                PlaceholderColor="{StaticResource colorGreenLight}"
+                HorizontalTextAlignment="Center"
+                TextColor="{StaticResource colorGreen}"
+                Text="Baka"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+            />
+
+            <Grid
+                BackgroundColor="Transparent"
+                HorizontalOptions="Fill"
+                Margin="50,40,50,0"
+                HeightRequest="50">
+                <ActivityIndicator 
+                    x:Name="_signUpSpinner"
+                    BackgroundColor="Transparent"
+                    Color="{StaticResource colorWhite}"
+                    IsRunning="false"
+                />
+                <Button
+                    x:Name="_signUpButton"
+                    BackgroundColor="{StaticResource colorBlue}"
+                    Text="Sign Up"
+                    IsVisible="true" 
+                    TextColor="{StaticResource colorWhite}"
+                    Clicked="OnSignUpButtonClicked"
+                />
+            </Grid>
+
+            <Button
+                x:Name="_cancelButton"
+                BackgroundColor="{StaticResource colorRed}"
+                Text="Cancel"
+                TextColor="{StaticResource colorWhite}"
+                HeightRequest="50"
+                Margin="50,40,50,0"
+                Clicked="OnCancelButtonClicked"
+            />
+            
+            
+        </StackLayout>
+
+	</ContentPage.Content>
+    
+</ContentPage>

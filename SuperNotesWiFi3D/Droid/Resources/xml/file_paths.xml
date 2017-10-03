@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+	<!--
+	
+	path="Android/data/com.shakuro.Super_Notes_WiFi_3D/files/Pictures"
+	
+	-->   
+	<external-path name="my_images"  />
+</paths>

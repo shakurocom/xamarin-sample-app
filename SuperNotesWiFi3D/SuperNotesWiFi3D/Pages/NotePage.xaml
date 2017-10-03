@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SuperNotesWiFi3D.Pages.NotePage"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+
+    <Grid
+        VerticalOptions="Fill"
+        HorizontalOptions="Fill">
+
+        <StackLayout 
+            Orientation="Vertical"
+            Spacing="0">
+
+            <BoxView
+                x:Name="_statusBarBackground"
+                BackgroundColor="{StaticResource colorGreen}"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+                HeightRequest="20"
+                MinimumHeightRequest="20">
+            </BoxView>
+
+            <!--top bar-->
+            <Grid
+                x:Name="_topBar"
+                HeightRequest="50"
+                MinimumHeightRequest="50"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+                BackgroundColor="{StaticResource colorGreen}">
+
+                <Button 
+                    x:Name="_topBarBackButton"
+                    Text="&lt; back"
+                    TextColor="{StaticResource colorWhite}"
+                    FontAttributes="Bold"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Start"
+                    WidthRequest="60"
+                    IsEnabled="true"
+                    Clicked="TopBarBackButtonClicked">
+                </Button>
+                
+                <Label 
+                    x:Name="_topBarTitleLabel"
+                    Text="Title"
+                    TextColor="{StaticResource colorWhite}"
+                    FontAttributes="Bold"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center">
+                </Label>
+
+            </Grid>
+
+            <!--content-->
+            <ScrollView 
+                Orientation="Vertical"
+                VerticalOptions="FillAndExpand">
+                <StackLayout 
+                    x:Name="_contentStackView"
+                    Orientation="Vertical" 
+                    Padding="3,3,3,3"
+                    Spacing="0"
+                    BackgroundColor="{StaticResource colorWhite}">
+                    <Label 
+                        x:Name="_nameLabel"
+                        Text="{Binding Name}"
+                        TextColor="{StaticResource colorBlack}"
+                        BackgroundColor="Transparent"
+                        FontSize="16"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Fill"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                    />
+                    
+                    <Label 
+                        Text="{Binding CreationDateString}"
+                        TextColor="{StaticResource colorGray}"
+                        BackgroundColor="Transparent"
+                        FontSize="12"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                    />
+
+                    <ffimageloading:CachedImage 
+                        x:Name="_imageView"
+                        BackgroundColor="{StaticResource colorWhite}"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Start"
+                        Margin="0,3,0,3"
+                        Aspect="AspectFit"
+                        >
+                    </ffimageloading:CachedImage>
+                    
+                    <Label 
+                        Text="{Binding Text}" 
+                        LineBreakMode="WordWrap"
+                        TextColor="{StaticResource colorGray}"
+                        VerticalOptions="Fill"
+                        HorizontalOptions="Fill"
+                        VerticalTextAlignment="Start"
+                        HorizontalTextAlignment="Start"
+                        MinimumHeightRequest="20"
+                        BackgroundColor="{StaticResource colorWhite}"
+                        FontSize="12"
+                    />
+                    
+                </StackLayout>
+            </ScrollView>
+
+            <!--bottom bar-->
+            <StackLayout
+                x:Name="_bottomBar"
+                Orientation="Horizontal"
+                HeightRequest="50"
+                MinimumHeightRequest="50"
+                VerticalOptions="End"
+                HorizontalOptions="Fill"
+                BackgroundColor="{StaticResource colorGreen}">
+
+                <BoxView
+                    BackgroundColor="Transparent"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="StartAndExpand">
+                </BoxView>
+
+                <Button 
+                    x:Name="_bottomBarTestButton"
+                    Text="Test"
+                    TextColor="{StaticResource colorWhite}"
+                    FontAttributes="Bold"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="End"
+                    WidthRequest="110"
+                    Margin="0,0,0,0"
+                    Clicked="TestButtonClicked">
+                </Button>
+
+                <Button 
+                    x:Name="_bottomBarCreatePDFButton"
+                    Text="Create PDF"
+                    TextColor="{StaticResource colorWhite}"
+                    FontAttributes="Bold"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="End"
+                    WidthRequest="110"
+                    Margin="0,0,0,0"
+                    Clicked="CreatePDFButtonClicked">
+                </Button>
+                
+            </StackLayout>
+
+        </StackLayout>
+
+        <ContentView
+            x:Name="_spinnerOverlay"
+            BackgroundColor="{StaticResource colorWhiteShadow}">
+            <ActivityIndicator
+                IsEnabled="true"
+                IsRunning="true"
+                IsVisible="true"
+                Color="{StaticResource colorBlack}">
+            </ActivityIndicator>
+        </ContentView>
+        
+    </Grid>
+	
+</ContentPage>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="SuperNotesWiFi3D.Pages.PDFPreviewPage">
+
+      <StackLayout 
+        Orientation="Vertical"
+        Spacing="0">
+
+        <BoxView
+            x:Name="_statusBarBackground"
+            BackgroundColor="{StaticResource colorGreen}"
+            VerticalOptions="Start"
+            HorizontalOptions="Fill"
+            HeightRequest="20"
+            MinimumHeightRequest="20">
+        </BoxView>
+
+        <!--top bar-->
+        <Grid
+            x:Name="_topBar"
+            HeightRequest="50"
+            MinimumHeightRequest="50"
+            VerticalOptions="Start"
+            HorizontalOptions="Fill"
+            BackgroundColor="{StaticResource colorGreen}">
+
+            <Button 
+                x:Name="_topBarBackButton"
+                Text="&lt; back"
+                TextColor="{StaticResource colorWhite}"
+                FontAttributes="Bold"
+                BackgroundColor="Transparent"
+                VerticalOptions="Fill"
+                HorizontalOptions="Start"
+                WidthRequest="60"
+                IsEnabled="true"
+                Clicked="TopBarBackButtonClicked">
+            </Button>
+            
+            <Label 
+                x:Name="_topBarTitleLabel"
+                Text="Title"
+                TextColor="{StaticResource colorWhite}"
+                FontAttributes="Bold"
+                BackgroundColor="Transparent"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center">
+            </Label>
+
+        </Grid>
+
+        <!--content-->
+        <WebView
+            x:Name="_webView"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="Fill">
+        </WebView>
+
+        <!--bottom bar-->
+        <StackLayout
+            x:Name="_bottomBar"
+            Orientation="Horizontal"
+            HeightRequest="50"
+            MinimumHeightRequest="50"
+            VerticalOptions="End"
+            HorizontalOptions="Fill"
+            BackgroundColor="{StaticResource colorGreen}">
+
+            <BoxView
+                BackgroundColor="Transparent"
+                VerticalOptions="Fill"
+                HorizontalOptions="StartAndExpand">
+            </BoxView>
+
+            <Button 
+                x:Name="_bottomBarCreatePDFButton"
+                Text="Send PDF"
+                TextColor="{StaticResource colorWhite}"
+                FontAttributes="Bold"
+                BackgroundColor="Transparent"
+                VerticalOptions="Fill"
+                HorizontalOptions="End"
+                WidthRequest="100"
+                Margin="0,0,0,0"
+                Clicked="SendPDFButtonClicked">
+            </Button>
+            
+        </StackLayout>
+
+    </StackLayout>
+    
+</ContentPage>

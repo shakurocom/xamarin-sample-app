@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:SuperNotesWiFi3D.Pages.Controls;assembly=SuperNotesWiFi3D"
+    x:Class="SuperNotesWiFi3D.Pages.LoginPage">
+    
+	<ContentPage.Content>
+    
+        <StackLayout
+            BackgroundColor="{StaticResource colorGreen}"
+            VerticalOptions="Fill"
+            HorizontalOptions="Fill">
+            
+            <controls:NoHelperEntry
+                x:Name="_emailEntry"
+                Margin="20,100,20,0"
+                HeightRequest="50"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+                BackgroundColor="{StaticResource colorWhite}"
+                Placeholder="email"
+                Keyboard="Email"
+                PlaceholderColor="{StaticResource colorGreenLight}"
+                HorizontalTextAlignment="Center"
+                TextColor="#ff4abf5a"
+                Text=""
+            />
+            
+            <controls:NoHelperEntry
+                x:Name="_passwordEntry"
+                Margin="20,20,20,0"
+                HeightRequest="50"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+                BackgroundColor="{StaticResource colorWhite}"
+                Placeholder="password"
+                PlaceholderColor="{StaticResource colorGreenLight}"
+                HorizontalTextAlignment="Center"
+                TextColor="#ff4abf5a"
+                Text=""
+                IsPassword="true"
+            />
+            
+            <Grid
+                BackgroundColor="Transparent"
+                HorizontalOptions="Fill"
+                Margin="50,50,50,0"
+                HeightRequest="50">
+                <ActivityIndicator 
+                    x:Name="_signInSpinner"
+                    BackgroundColor="Transparent"
+                    Color="{StaticResource colorWhite}"
+                    IsRunning="false"
+                />
+                <Button
+                    x:Name="_signInButton"
+                    BackgroundColor="{StaticResource colorBlue}"
+                    Text="Sign In"
+                    IsVisible="true" 
+                    TextColor="{StaticResource colorWhite}"
+                    FontAttributes="Bold"
+                    Clicked="OnSignInButtonClicked"
+                />
+            </Grid>
+            
+            <Button
+                x:Name="_signUpButton"
+                BackgroundColor="{StaticResource colorRed}"
+                Text="Sign Up"
+                IsVisible="true" 
+                TextColor="{StaticResource colorWhite}"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                Margin="50,20,50,0"
+                Clicked="OnSignUpButtonClicked"
+            />
+
+            <Button
+                x:Name="_facebookButton"
+                BackgroundColor="{StaticResource colorBlue}"
+                Text="Sign In with Facebook"
+                IsVisible="true" 
+                TextColor="{StaticResource colorWhite}"
+                FontAttributes="Bold"
+                HeightRequest="50"
+                Margin="50,20,50,0"
+                Clicked="FacebookButtonClicked"
+            />
+
+        </StackLayout>
+
+	</ContentPage.Content>
+    
+</ContentPage>

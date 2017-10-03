@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="SuperNotesWiFi3D.Pages.HomePage"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+
+    <StackLayout 
+        Orientation="Vertical"
+        Spacing="0">
+
+        <BoxView
+            x:Name="_statusBarBackground"
+            BackgroundColor="{StaticResource colorGreen}"
+            VerticalOptions="Start"
+            HorizontalOptions="Fill"
+            HeightRequest="20"
+            MinimumHeightRequest="20">
+        </BoxView>
+
+        <!--top bar-->
+        <Grid
+            x:Name="_topBar"
+            HeightRequest="50"
+            MinimumHeightRequest="50"
+            VerticalOptions="Start"
+            HorizontalOptions="Fill"
+            BackgroundColor="{StaticResource colorGreen}">
+            
+            <Label 
+                x:Name="_topBarTitleLabel"
+                Text="Title"
+                TextColor="{StaticResource colorWhite}"
+                FontAttributes="Bold"
+                BackgroundColor="Transparent"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center">
+            </Label>
+            
+            <Button 
+                x:Name="_topBarAddNoteButton"
+                Text="Add"
+                TextColor="{StaticResource colorWhite}"
+                FontAttributes="Bold"
+                BackgroundColor="Transparent"
+                VerticalOptions="Fill"
+                HorizontalOptions="End"
+                WidthRequest="60"
+                IsEnabled="false">
+            </Button>
+            
+        </Grid>
+
+        <!--table-->
+        <ListView x:Name="_notesTable"
+            BackgroundColor="{StaticResource colorWhite}"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="Fill"
+            IsGroupingEnabled="false"
+            SeparatorVisibility="None"
+            IsPullToRefreshEnabled="true"
+            HasUnevenRows="true">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell
+                        IsEnabled="true">
+                        
+                        <StackLayout 
+                            Orientation="Vertical" 
+                            Padding="3,3,3,3"
+                            Spacing="0"
+                            BackgroundColor="{StaticResource colorWhite}">
+                            <Label 
+                                Text="{Binding Name}"
+                                TextColor="{StaticResource colorBlack}"
+                                BackgroundColor="Transparent"
+                                FontSize="16"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Fill"
+                                HorizontalTextAlignment="Start"
+                                VerticalTextAlignment="Center"
+                            />
+                            
+                            <Label 
+                                Text="{Binding CreationDateString}"
+                                TextColor="{StaticResource colorGray}"
+                                BackgroundColor="Transparent"
+                                FontSize="12"
+                                VerticalOptions="Start"
+                                HorizontalOptions="Fill"
+                                HorizontalTextAlignment="Start"
+                                VerticalTextAlignment="Center"
+                            />
+
+                            <ffimageloading:CachedImage 
+                                Source="{Binding ImageURLString}"
+                                IsVisible="{Binding IsImageAvailable}"
+                                BackgroundColor="{StaticResource colorWhite}"
+                                VerticalOptions="Start"
+                                HorizontalOptions="Start"
+                                HeightRequest="100"
+                                Margin="0,3,0,3"
+                                Aspect="AspectFit"
+                                LoadingPlaceholder="loading.jpg"
+                                ErrorPlaceholder="error.png"
+                                RetryCount="1"
+                                FixedOnMeasureBehavior="true"
+                                DownsampleToViewSize="true">
+                            </ffimageloading:CachedImage>
+
+                            <Label 
+                                Text="{Binding Text}" 
+                                LineBreakMode="WordWrap"
+                                TextColor="{StaticResource colorGray}"
+                                VerticalOptions="Fill"
+                                HorizontalOptions="Fill"
+                                VerticalTextAlignment="Start"
+                                HorizontalTextAlignment="Start"
+                                MinimumHeightRequest="20"
+                                BackgroundColor="{StaticResource colorWhite}"
+                                FontSize="12"
+                            />
+                            
+                            <BoxView 
+                                BackgroundColor="{StaticResource colorBlue}"
+                                HeightRequest="1"
+                                Margin="0,3,0,3"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="End"
+                            />
+                            
+                        </StackLayout>
+                        
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!--bottom bar-->
+        <StackLayout
+            x:Name="_bottomBar"
+            Orientation="Horizontal"
+            HeightRequest="50"
+            MinimumHeightRequest="50"
+            VerticalOptions="End"
+            HorizontalOptions="Fill"
+            BackgroundColor="{StaticResource colorGreen}">
+
+            <BoxView
+                BackgroundColor="Transparent"
+                VerticalOptions="Fill"
+                HorizontalOptions="StartAndExpand">
+            </BoxView>
+
+            <Button 
+                x:Name="_bottomBarShowUserProfileButton"
+                Text="Profile"
+                TextColor="{StaticResource colorWhite}"
+                FontAttributes="Bold"
+                BackgroundColor="Transparent"
+                VerticalOptions="Fill"
+                HorizontalOptions="End"
+                WidthRequest="100"
+                Margin="0,0,0,0">
+            </Button>
+            
+        </StackLayout>
+            
+    </StackLayout>
+            
+</ContentPage>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="SuperNotesWiFi3D.Pages.UserProfilePage">
+
+    <StackLayout 
+        Orientation="Vertical"
+        Spacing="0">
+
+        <BoxView
+            x:Name="_statusBarBackground"
+            BackgroundColor="{StaticResource colorGreen}"
+            VerticalOptions="Start"
+            HorizontalOptions="Fill"
+            HeightRequest="20"
+            MinimumHeightRequest="20">
+        </BoxView>
+
+        <!--top bar-->
+        <Grid
+            x:Name="_topBar"
+            HeightRequest="50"
+            MinimumHeightRequest="50"
+            VerticalOptions="Start"
+            HorizontalOptions="Fill"
+            BackgroundColor="{StaticResource colorGreen}">
+            
+            <Label 
+                x:Name="_topBarTitleLabel"
+                Text="Title"
+                TextColor="{StaticResource colorWhite}"
+                FontAttributes="Bold"
+                BackgroundColor="Transparent"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                VerticalTextAlignment="Center"
+                HorizontalTextAlignment="Center">
+            </Label>
+            
+            <Button 
+                x:Name="_topBarBackButton"
+                Text="&lt; back"
+                TextColor="{StaticResource colorWhite}"
+                FontAttributes="Bold"
+                BackgroundColor="Transparent"
+                VerticalOptions="Fill"
+                HorizontalOptions="Start"
+                WidthRequest="60"
+                Clicked="TopBarBackButtonClicked">
+            </Button>
+            
+        </Grid>
+
+        <!--content-->
+        <StackLayout
+            BackgroundColor="{StaticResource colorWhite}">
+
+            <Label
+                Text="name:"
+                TextColor="{StaticResource colorGreen}"
+                HorizontalOptions="Fill"
+                VerticalOptions="Start"
+                Margin="5,5,5,0"
+                BackgroundColor="Transparent">
+            </Label>
+
+            <Entry
+                x:Name="_mainUserNameTextField"
+                TextColor="{StaticResource colorBlack}"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+                Margin="5,3,5,0"
+                BackgroundColor="{StaticResource colorGreen}"
+                InputTransparent="true">
+            </Entry>
+
+            <Button
+                x:Name="_mainLogoutButton"
+                Text="Logout"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+                HeightRequest="40"
+                Margin="50,50,50,0"
+                FontAttributes="Bold"
+                TextColor="{StaticResource colorWhite}"
+                BackgroundColor="{StaticResource colorRed}"
+                Clicked="MainLogoutButtonClicked">
+            </Button>
+            
+        </StackLayout>
+
+    </StackLayout>
+	
+</ContentPage>

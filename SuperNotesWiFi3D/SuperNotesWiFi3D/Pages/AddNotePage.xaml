@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="SuperNotesWiFi3D.Pages.AddNotePage"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+
+    <Grid>
+        
+        <StackLayout
+            Orientation="Vertical"
+            Spacing="0">
+
+            <BoxView
+                x:Name="_statusBarBackground"
+                BackgroundColor="{StaticResource colorGreen}"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+                HeightRequest="20"
+                MinimumHeightRequest="20">
+            </BoxView>
+
+            <!--top bar-->
+            <Grid
+                x:Name="_topBar"
+                HeightRequest="50"
+                MinimumHeightRequest="50"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+                BackgroundColor="{StaticResource colorGreen}">
+
+                <Button 
+                    x:Name="_topBarBackButton"
+                    Text="&lt; back"
+                    TextColor="{StaticResource colorWhite}"
+                    FontAttributes="Bold"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Start"
+                    WidthRequest="60"
+                    Clicked="TopBarBackButtonClicked">
+                </Button>
+                
+                <Label 
+                    x:Name="_topBarTitleLabel"
+                    Text="Title"
+                    TextColor="{StaticResource colorWhite}"
+                    FontAttributes="Bold"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center">
+                </Label>
+                
+                <Button 
+                    x:Name="_topBarDoneButton"
+                    Text="Add"
+                    TextColor="{StaticResource colorWhite}"
+                    FontAttributes="Bold"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="End"
+                    WidthRequest="60"
+                    Clicked="TopBarDoneButtonClicked">
+                </Button>
+                
+            </Grid>
+
+            <!--Name-->
+            <Label
+                Text="Name:"
+                BackgroundColor="{StaticResource colorWhite}"
+                TextColor="{StaticResource colorGreen}"
+                Margin="5,5,5,0"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+            />
+            <Entry
+                x:Name="_nameField"
+                HeightRequest="50"
+                Text=""
+                TextColor="{StaticResource colorBlack}"
+                Margin="5,0,5,0"
+                VerticalOptions="Start"
+                HorizontalOptions="Fill"
+                HorizontalTextAlignment="Start"
+                BackgroundColor="{StaticResource colorGreenLight}"
+            />
+
+            <!--Image-->
+            <Label 
+                Text="Image:"
+                TextColor="{StaticResource colorGreen}"
+                BackgroundColor="{StaticResource colorWhite}"
+                Margin="5,0,5,0"
+            />
+            <Grid
+                Margin="5,0,5,0"
+                HeightRequest="100">
+                <ContentView
+                    x:Name="_addImageBlock"
+                    IsVisible="true"
+                    BackgroundColor="Transparent">
+                    <Grid 
+                        ColumnSpacing="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button 
+                            x:Name="_addImageFromLibraryButton"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="From Library"
+                            TextColor="{StaticResource colorBlack}"
+                            VerticalOptions="Fill"
+                            HorizontalOptions="Fill"
+                            BackgroundColor="{StaticResource colorGreenLight}"
+                            Clicked="AddImageFromLibraryButtonClicked"
+                        />
+                        <Button 
+                            x:Name="_addImageFromCameraButton"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Text="From Camera"
+                            TextColor="{StaticResource colorBlack}"
+                            VerticalOptions="Fill"
+                            HorizontalOptions="Fill"
+                            BackgroundColor="{StaticResource colorGreenLight}"
+                            Clicked="AddImageFromCameraButtonClicked"
+                        />
+                    </Grid>
+                </ContentView>
+                <ffimageloading:CachedImage 
+                    x:Name="_imageView"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    DownsampleHeight="100"
+                    HeightRequest="100"
+                    DownsampleToViewSize="true"
+                    BackgroundColor="Transparent"
+                    BitmapOptimizations="true"
+                    IsVisible="false">
+                </ffimageloading:CachedImage>
+            </Grid>
+
+            <!--Text-->
+            <Label 
+                Text="Text:"
+                TextColor="{StaticResource colorGreen}"
+                BackgroundColor="{StaticResource colorWhite}"
+                Margin="5,0,5,0"
+            />
+            <Editor
+                x:Name="_textField"
+                Text=""
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="Fill"
+                Margin="5,0,5,5"
+                BackgroundColor="{StaticResource colorGreenLight}"
+                TextColor="{StaticResource colorBlack}"
+            />
+            
+        </StackLayout>
+
+        <ContentView
+            x:Name="_mainSpinnerBlock"
+            VerticalOptions="Fill"
+            HorizontalOptions="Fill"
+            BackgroundColor="{StaticResource colorWhiteShadow}"
+            IsVisible="true">
+            
+            <ActivityIndicator 
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                IsRunning="true"
+                Color="{StaticResource colorBlack}"
+            />
+            
+        </ContentView>
+        
+    </Grid>
+
+</ContentPage>
