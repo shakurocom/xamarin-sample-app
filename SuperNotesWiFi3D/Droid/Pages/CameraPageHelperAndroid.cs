@@ -16,6 +16,7 @@ namespace SuperNotesWiFi3D.Droid.Pages
 
         private const int _intentRequestCode_PickImage = 1000;
         private const int _intentRequestCode_CaptureImage = 1001;
+        private const int _intentRequestCode_RequestPermissions = 1002;
 
         private Action<string> _lastCompletionHandler = null;
 
@@ -33,7 +34,7 @@ namespace SuperNotesWiFi3D.Droid.Pages
                     {
                         var imageStream = activity.ContentResolver.OpenInputStream(data.Data);
 
-                        string tempImagePath = App.FileHelper.TempFilePath(DateTime.Now.ToString("yyyy_MM_dd_HH_MM_ss.jpg"), true);
+                        string tempImagePath = App.FileHelper.PersistentLocalFilePath(DateTime.Now.ToString("yyyy_MM_dd_HH_MM_ss.jpg"));
 
                         var file = App.FileHelper.CreateFile(tempImagePath);
                         imageStream.CopyTo(file);
@@ -51,7 +52,7 @@ namespace SuperNotesWiFi3D.Droid.Pages
                         (_lastCompletionHandler != null) &&
                         (_takenPhotoPath != null))
 					{
-                        string tempImagePath = App.FileHelper.TempFilePath(DateTime.Now.ToString("yyyy_MM_dd_HH_MM_ss.jpg"), true);
+                        string tempImagePath = App.FileHelper.PersistentLocalFilePath(DateTime.Now.ToString("yyyy_MM_dd_HH_MM_ss.jpg"));
 
                         App.FileHelper.CopyFile(_takenPhotoPath, tempImagePath);
 
@@ -60,6 +61,10 @@ namespace SuperNotesWiFi3D.Droid.Pages
                         _lastCompletionHandler(tempImagePath);
 					}
 					break;
+
+                case _intentRequestCode_RequestPermissions:
+                    // shoud not be here
+                    break;
 
                 default:
                     // do nothing - result is not for us
@@ -138,6 +143,19 @@ namespace SuperNotesWiFi3D.Droid.Pages
 				//var imageFile = new Java.IO.File(imageFileName + ".jpg");
 
 				Java.IO.File directory = Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryPictures);
+
+                if (activity.ShouldShowRequestPermissionRationale(Android.Manifest.Permission.WriteExternalStorage) ||
+                    activity.ShouldShowRequestPermissionRationale(Android.Manifest.Permission.Camera))
+                {
+                    activity.RequestPermissions(new string[] { 
+                        Android.Manifest.Permission.WriteExternalStorage, 
+                        Android.Manifest.Permission.Camera }, 
+                                                _intentRequestCode_RequestPermissions);
+                    completionHandler(null);
+                    _lastCompletionHandler = null;
+                    return;
+                }
+
 				var imageFile = Java.IO.File.CreateTempFile(imageFileName, ".jpg", directory);
 				var imageURI = Android.Support.V4.Content.FileProvider.GetUriForFile(activity,
 																					 "com.shakuro.Super_Notes_WiFi_3D.fileprovider",
